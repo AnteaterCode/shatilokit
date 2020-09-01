@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./autocompletedemo.component.scss']
 })
 export class AutocompletedemoComponent implements OnInit {
-  dataSource = [{label: '11213', value: 'drer'}];
+  dataSource = [];
   constructor() {
-
+    // {label: '55', value: 'drer'}, {label: 'sdnglkangrkj', value: 'drer'}
+    this.dataSource.push({label: '55', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    console.log(this.dataSource);
   }
 
   ngOnInit() {

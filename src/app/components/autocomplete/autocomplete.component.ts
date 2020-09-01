@@ -12,7 +12,7 @@ import { ShAutocompleteOptionComponent } from './autocomplete-option.component';
 })
 export class AutocompleteComponent  {
 
-  @Input() nzWidth?: number;
+  @Input() shWidth?: number;
   @Input() shDataSource?: any;
 
   isOpen = false;

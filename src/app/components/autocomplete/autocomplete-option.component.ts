@@ -17,8 +17,8 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input } 
     '[class.sh-select-item-option-selected]': 'selected',
     '[class.sh-select-item-option-active]': 'active',
     '[class.sh-select-item-option-disabled]': 'shDisabled',
-    '[attr.aria-selected]': 'selected.toString()',
-    '[attr.aria-disabled]': 'shDisabled.toString()',
+   // '[attr.aria-selected]': 'selected.toString()',
+   // '[attr.aria-disabled]': 'shDisabled.toString()',
     '(click)': 'selectViaInteraction()',
     '(mouseenter)': 'onMouseEnter()',
     '(mousedown)': '$event.preventDefault()'
@@ -31,5 +31,9 @@ export class ShAutocompleteOptionComponent {
   constructor() { }
 
   selectViaInteraction(): void {
+  }
+
+  onMouseEnter() {
+
   }
 }

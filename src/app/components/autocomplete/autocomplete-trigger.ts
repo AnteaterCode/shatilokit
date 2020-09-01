@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, forwardRef, ExistingProvider, Input, ElementRef, ViewContainerRef } from '@angular/core';
+import { Directive, OnDestroy, forwardRef, ExistingProvider, Input, ElementRef, ViewContainerRef, Optional, Inject } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import {
     ConnectionPositionPair,
@@ -9,8 +9,10 @@ import {
     PositionStrategy
   } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
 
 import { AutocompleteComponent } from './autocomplete.component';
+import { Subscription, merge, fromEvent } from 'rxjs';
 
 
 export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
@@ -37,11 +39,13 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
     private portal: TemplatePortal<{}> | null = null;
     private positionStrategy!: FlexibleConnectedPositionStrategy;
 
+    private overlayBackdropClickSubscription!: Subscription;
 
     constructor(
         private elementRef: ElementRef, // обертка над нативным элементом
         private overlay: Overlay, // сервис для всплывающих панелей
-        private viewContainerRef: ViewContainerRef // Апи для создания новых вьюх у текущего компонента
+        private viewContainerRef: ViewContainerRef, // Апи для создания новых вьюх у текущего компонента
+        @Optional() @Inject(DOCUMENT) private document: any
     ) {}
 
     writeValue(value: any): void {
@@ -104,7 +108,7 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
         if (this.overlayRef && !this.overlayRef.hasAttached()) {
             this.overlayRef.attach(this.portal);
             // this.selectionChangeSubscription = this.subscribeSelectionChange();
-            // this.overlayBackdropClickSubscription = this.subscribeOverlayBackdropClick();
+            this.overlayBackdropClickSubscription = this.subscribeOverlayBackdropClick();
             // this.optionsChangeSubscription = this.subscribeOptionsChange();
            // this.overlayRef
            //   .detachments()
@@ -117,6 +121,39 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
         this.shAutocomplete.isOpen = true;
     }
 
+    /**
+   * Подписка на клик за пределами панели
+   */
+    private subscribeOverlayBackdropClick(): Subscription {
+        return merge<MouseEvent | TouchEvent>(
+        fromEvent<MouseEvent>(this.document, 'click'),
+        fromEvent<TouchEvent>(this.document, 'touchend')
+        ).subscribe((event: MouseEvent | TouchEvent) => {
+        const clickTarget = event.target as HTMLElement;
+        console.log('subscribeOverlayBackdropClick');
+        // Make sure is not self
+        // tslint:disable-next-line:no-non-null-assertion
+        if (clickTarget !== this.elementRef.nativeElement && !this.overlayRef!.overlayElement.contains(clickTarget) ) {
+            this.closePanel();
+        }
+        });
+    }
+
+    closePanel(): void {
+        // if (this.panelOpen) {
+        //  this.shAutocomplete.isOpen = this.panelOpen = false;
+
+          if (this.overlayRef && this.overlayRef.hasAttached()) {
+            // this.selectionChangeSubscription.unsubscribe();
+            this.overlayBackdropClickSubscription.unsubscribe();
+            // this.optionsChangeSubscription.unsubscribe();
+            this.overlayRef.dispose();
+            this.overlayRef = null;
+            this.portal = null;
+          }
+        // }
+      }
+
     ngOnDestroy(): void {
         throw new Error("Method not implemented.");
     }
@@ -127,7 +164,7 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
           disposeOnNavigation: true,
           scrollStrategy: this.overlay.scrollStrategies.reposition(),
           // default host element width
-          width: this.shAutocomplete.nzWidth || this.getHostWidth()
+          width: this.shAutocomplete.shWidth || this.getHostWidth()
         });
     }
 
@@ -142,7 +179,7 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
           .withFlexibleDimensions(false)
           .withPush(false)
           .withPositions(positions)
-          .withTransformOriginOn('.ant-select-dropdown');
+          .withTransformOriginOn('.sh-select-dropdown');
         return this.positionStrategy;
     }
 
