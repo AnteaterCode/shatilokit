@@ -42,5 +42,11 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
+  },
+  "bit": {
+    "env": {"compiler": "bit.envs/compilers/angular@0.1.2"   },
+    "componentsDefaultDirectory": "components/{shatilokit}",
+    "packageManager": "npm"
   }
+  
 }
