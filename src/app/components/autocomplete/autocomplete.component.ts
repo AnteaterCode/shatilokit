@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { ShAutocompleteOptionComponent } from './autocomplete-option.component';
 
 @Component({
@@ -12,9 +12,15 @@ import { ShAutocompleteOptionComponent } from './autocomplete-option.component';
 })
 export class AutocompleteComponent  {
 
+  @Input() nzWidth?: number;
   @Input() shDataSource?: any;
 
   isOpen = false;
+
+   /** cdk-overlay */
+   @ViewChild(TemplateRef, { static: false }) template?: TemplateRef<{}>;
+   @ViewChild('panel', { static: false }) panel?: ElementRef;
+   @ViewChild('content', { static: false }) content?: ElementRef;
 
   constructor() { }
 
