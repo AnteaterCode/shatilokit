@@ -7,8 +7,8 @@ import { InputModule } from '../../../components/input/public-api';
 @NgModule({
   imports: [
     CommonModule,
-    AutocompleteModule,
-    InputModule
+    InputModule,
+    AutocompleteModule
   ],
   declarations: [AutocompletedemoComponent],
   exports: [AutocompletedemoComponent]
