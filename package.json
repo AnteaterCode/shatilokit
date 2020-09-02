@@ -46,9 +46,9 @@
   },
   "bit": {
     "env": {
-      "compiler": "bit.envs/compilers/angular@0.1.2"
+      "compiler": "bit.envs/compilers/angular@9.0.21"
     },
-    "componentsDefaultDirectory": "components/{shatilokit}",
+    "componentsDefaultDirectory": "components/{shatilokit}/{name}",
     "packageManager": "npm"
   }
 }
