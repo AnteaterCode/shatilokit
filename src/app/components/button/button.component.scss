@@ -4,7 +4,7 @@ $sh-button-margin: 0 !default;
 $sh-button-line-height: 36px !default;
 $sh-button-border-radius: 4px !default;
 
-/* @mixin mat-button-reset {
+ @mixin mat-button-reset {
     @include user-select(none);
     cursor: pointer;
     outline: none;
@@ -37,7 +37,6 @@ $sh-button-border-radius: 4px !default;
         cursor: default;
     }
 }
-*/
 
 .sh-button-base  {
     cursor: pointer;
