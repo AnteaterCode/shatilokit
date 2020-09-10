@@ -1,0 +1,5 @@
+@import '../../../button//button-theme.scss';
+
+@mixin angular-material-theme($theme-or-color-config) {
+  @include sh-button-theme($theme-or-color-config);
+}

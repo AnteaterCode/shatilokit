@@ -1,0 +1,45 @@
+@mixin sh-core($typography-config: null) {
+
+
+}
+
+@mixin sh-core-color($config-or-theme) {
+  $config: sh-get-color-config($config-or-theme);
+  // Wrapper element that provides the theme background when the user's content isn't
+  // inside of a `sh-sidenav-container`. Note that we need to exclude the ampersand
+  // selector in case the mixin is included at the top level.
+  .sh-app-background#{if(&, ', &.sh-app-background', '')} {
+    $background: map-get($config, background);
+    $foreground: map-get($config, foreground);
+
+    background-color: sh-color($background, background);
+    color: sh-color($foreground, text);
+  }
+
+  // Provides external CSS classes for each elevation value. Each CSS class is forshted as
+  // `sh-elevation-z$zValue` where `$zValue` corresponds to the z-space to which the element is
+  // elevated.
+  @for $zValue from 0 through 24 {
+    .#{$_sh-elevation-prefix}#{$zValue} {
+      @include _sh-theme-elevation($zValue, $config);
+    }
+  }
+
+// Миксин создания всех цветов темы
+@mixin sh-core-theme($theme-or-color-config) {
+  $theme: _sh-legacy-get-theme($theme-or-color-config);
+  // Wrap the sub-theme includes in the duplicate theme styles mixin. This ensures that
+  // there won't be multiple warnings. e.g. if `sh-core-theme` reports a warning, then
+  // the imported themes (such as `sh-ripple-theme`) should not report again.
+  @include _sh-check-duplicate-theme-styles($theme, 'sh-core') {
+    @include sh-ripple-theme($theme);
+    @include sh-option-theme($theme);
+    @include sh-optgroup-theme($theme);
+    @include sh-pseudo-checkbox-theme($theme);
+
+    $color: sh-get-color-config($theme);
+    @if $color != null {
+      @include sh-core-color($color);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import 'palette';
+
+@mixin sh-button-color($config-or-theme) {
+  $primary: map-get($config, primary);
+
+  .sh-button {
+    color: inherit;
+    background: transparent;
+
+    @include _sh-button-theme-property($config, 'color', text);
+    @include _sh-button-focus-overlay-color($config);
+
+  }
+}
+
+@mixin sh-button-theme($theme-or-color-config) {
+  $theme: _sh-legacy-get-theme($theme-or-color-config);
+  @include _sh-check-duplicate-theme-styles($theme, 'sh-button') {
+    $color: sh-get-color-config($theme);
+    $density: sh-get-density-config($theme);
+    $typography: sh-get-typography-config($theme);
+
+    @if $color != null {
+      @include sh-button-color($color);
+    }
+    @if $density != null {
+      @include _sh-button-density($density);
+    }
+    @if $typography != null {
+      @include sh-button-typography($typography);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import '../all-theme.scss';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: sh-palette($mat-deep-purple);
+$accent:  sh-palette($mat-amber, A200, A100, A400);
+
+$theme: sh-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  )
+));
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
