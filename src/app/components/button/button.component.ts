@@ -10,6 +10,7 @@ const BUTTON_HOST_ATTRIBUTES = [
 @Component({
   selector: 'button[shButton]',
   exportAs: 'shButton',
+  inputs: ['color'],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   encapsulation: ViewEncapsulation.None,

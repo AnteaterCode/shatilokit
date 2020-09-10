@@ -24,6 +24,7 @@
       @include _sh-theme-elevation($zValue, $config);
     }
   }
+}
 
 // Миксин создания всех цветов темы
 @mixin sh-core-theme($theme-or-color-config) {

@@ -9,7 +9,24 @@
 
     @include _sh-button-theme-property($config, 'color', text);
     @include _sh-button-focus-overlay-color($config);
+  }
+}
 
+@mixin _sh-button-theme-property($theme, $property, $hue) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  &.sh-primary {
+    #{$property}: mat-color($primary, $hue);
+  }
+  &.sh-accent {
+    #{$property}: mat-color($accent, $hue);
+  }
+  &.sh-warn {
+    #{$property}: mat-color($warn, $hue);
   }
 }
 

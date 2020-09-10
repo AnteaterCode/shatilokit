@@ -2,5 +2,6 @@
 @import '../src/app//showcase/styles/sh.scss';
 
 @import '../src/app//components/core/style/theming/theming.scss';
+@import '../src/app//components/core/core.scss';
 
 @include sh-core();
