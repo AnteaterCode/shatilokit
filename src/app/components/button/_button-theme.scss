@@ -9,29 +9,28 @@
     }
 
     @include mat-button-theme-property($config, 'color', text);
+    @include mat-button-theme-property($config, 'background-color', default);
 }
 
 @mixin mat-button-theme-property($theme, $property, $hue) {
-   @debug  '@mixin _mat-button-theme-property';
+
+  
+   // получаем палитру основного цвета
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
-  
+    // $background: map-get($theme, background);
+    // $foreground: map-get($theme, foreground);
     .sh-primary {
-      background-color: blue;
+      // получаем цвет из палитры
+      #{$property}: mat-color($primary, 500);
     }
 
     .sh-accent {
      // #{$property}: red; //mat-color($accent, $hue);
-      background-color: green;
+      background-color: mat-color($accent, 500);
     }
 
 
-    .sh-accent {
-      // #{$property}: red; //mat-color($accent, $hue);
-       background-color: green;
-     }
 
     @debug  '@mixin _22';
 
