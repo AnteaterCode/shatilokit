@@ -4,36 +4,27 @@
     .sh-button {
         color: inherit;
         background: transparent;
-    
-       
     }
 
-    @include mat-button-theme-property($config, 'color', text);
+    @include mat-button-theme-property($config, 'color', default-contrast);
     @include mat-button-theme-property($config, 'background-color', default);
 }
 
 @mixin mat-button-theme-property($theme, $property, $hue) {
-
-  
    // получаем палитру основного цвета
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     // $background: map-get($theme, background);
     // $foreground: map-get($theme, foreground);
+    @debug  $property sh-color($primary, $hue);
     .sh-primary {
       // получаем цвет из палитры
-      #{$property}: mat-color($primary, 500);
+      #{$property}: sh-color($primary, $hue);
     }
 
     .sh-accent {
-     // #{$property}: red; //mat-color($accent, $hue);
-      background-color: mat-color($accent, 500);
+      background-color: sh-color($accent, $hue);
     }
-
-
-
-    @debug  '@mixin _22';
-
   }
 
 @mixin sh-button-theme($theme) {
