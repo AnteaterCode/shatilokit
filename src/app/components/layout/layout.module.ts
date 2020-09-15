@@ -5,13 +5,14 @@ import { ShLayoutComponent } from './layout.component';
 import { ShHeaderComponent } from './header.component';
 import {ShSiderComponent} from './sider.component';
 import { ShContentComponent } from './content.component';
+import { ShFooterComponent } from './footer.component';
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutModule
   ],
-  exports: [ShLayoutComponent, ShHeaderComponent, ShSiderComponent, ShContentComponent],
-  declarations: [ShLayoutComponent, ShHeaderComponent, ShSiderComponent, ShContentComponent]
+  exports: [ShLayoutComponent, ShHeaderComponent, ShSiderComponent, ShContentComponent, ShFooterComponent],
+  declarations: [ShLayoutComponent, ShHeaderComponent, ShSiderComponent, ShContentComponent, ShFooterComponent]
 })
 export class ShLayoutModule { }
