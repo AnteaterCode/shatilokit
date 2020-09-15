@@ -1,0 +1,7 @@
+@import './typography';
+
+@import '../../button/button-theme';
+
+@mixin sh-typography($config-or-theme: null) {
+    @include sh-button-typography($config-or-theme);
+}

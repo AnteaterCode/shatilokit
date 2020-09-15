@@ -3,6 +3,7 @@
 @import '../src/app/components/core/theming/all-theme';
 @import '../src//app//components/core/style/palette';
 @import '../src//app//components/core/theming/theming.scss';
+@import '../src//app//components//core/typography/all-typography.scss';
 
 @import '~@angular/cdk/overlay-prebuilt.css';
 
@@ -78,3 +79,4 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
 @debug  $candy-app-theme;
 
 @include angular-shkit-theme($candy-app-theme);
+@include sh-typography()

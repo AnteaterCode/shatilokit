@@ -32,3 +32,13 @@
     $color: mat-get-color-config($theme);
     @include sh-button-color($color);
 }
+
+@mixin sh-button-typography($config) {
+  .sh-button {
+    font: {
+     // family: sh-font-family($config, button);
+     //  size: sh-font-size($config, button);
+      // weight: sh-font-weight($config, button);
+    }
+  }
+}
