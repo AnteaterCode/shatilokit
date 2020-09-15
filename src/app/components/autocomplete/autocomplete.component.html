@@ -1,6 +1,5 @@
 <ng-template>
-  <div #panel class="ng-select-dropdown ng-select-dropdown-placement-bottomLeft" 
-     >
+  <div #panel class="ng-select-dropdown ng-select-dropdown-placement-bottomLeft">
     <div style="max-height: 256px; overflow-y: auto; overflow-anchor: none;">
       <div style="display: flex; flex-direction: column;">
         <ng-template *ngTemplateOutlet="shDataSource ? optionsTemplate : contentTemplate"></ng-template>
@@ -11,9 +10,11 @@
     <ng-content></ng-content>
   </ng-template>
   <ng-template #optionsTemplate>
-    <sh-autocomplete-option *ngFor="let option of shDataSource!" [value]="option"
-      [label]="option && $any(option).label ? $any(option).label : $any(option)">
-      {{ option && $any(option).label ? $any(option).label : $any(option) }}
-    </sh-autocomplete-option>
+    <div class="sh-autocomplete-panel" >
+      <sh-autocomplete-option *ngFor="let option of shDataSource!" [value]="option"
+        [label]="option && $any(option).label ? $any(option).label : $any(option)">
+        {{ option && $any(option).label ? $any(option).label : $any(option) }}
+      </sh-autocomplete-option>
+    </div>
   </ng-template>
 </ng-template>

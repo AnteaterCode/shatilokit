@@ -11,6 +11,15 @@ export class AutocompletedemoComponent implements OnInit {
     // {label: '55', value: 'drer'}, {label: 'sdnglkangrkj', value: 'drer'}
     this.dataSource.push({label: '55', value: 'drer'});
     this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
+    this.dataSource.push({label: 'ff', value: 'drer'});
     console.log(this.dataSource);
   }
 

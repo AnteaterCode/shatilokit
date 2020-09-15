@@ -1,5 +1,13 @@
 <div>
-  <input placeholder="input here" sh-input [shAutocomplete]="auto">
+  <sh-input-field [shSuffix]='suffixTemplate'>
+    <input placeholder="input here" sh-input [shAutocomplete]="auto">
+  </sh-input-field>
   <sh-autocomplete #auto [shDataSource]='dataSource'>
   </sh-autocomplete>
 </div>
+
+<ng-template #suffixTemplate>
+  <div style="display: flex;
+  justify-content: center;
+  flex-direction: column;">search</div>
+</ng-template>

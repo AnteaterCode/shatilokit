@@ -24,7 +24,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         <span class='sh-input-field-wrapper'>
-            <span class='sh-input-field-affix'>
+            <span *ngIf='shPrefix' class='sh-input-field-affix'>
                 {{shPrefix}}
             </span>
             <ng-content></ng-content>

@@ -4,6 +4,7 @@
 @import '../src//app//components/core/style/palette';
 @import '../src//app//components/core/theming/theming.scss';
 
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 $primary-color: (
     50 : #e0eff6,
