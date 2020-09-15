@@ -1,8 +1,10 @@
 @import '../core';
 @import '../../button/button-theme';
+@import '../../input/input-theme.scss';
 
 
 // Create a theme.
 @mixin angular-shkit-theme($theme) {
       @include sh-button-theme($theme);
+      @include sh-input-theme($theme);
 }

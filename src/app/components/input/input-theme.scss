@@ -1,0 +1,17 @@
+@mixin sh-input-color($config-or-theme) {
+    $config: mat-get-color-config($config-or-theme);
+    $primary: map-get($config, primary);
+    // $foreground: map-get($config, foreground);
+
+
+    .sh-input-element {
+       // color: mat-color($primary,  50); 
+       //  caret-color: mat-color($primary,  50); 
+    }
+
+}
+
+@mixin sh-input-theme($theme) {
+    $color: mat-get-color-config($theme);
+    @include sh-input-color($color);
+}
