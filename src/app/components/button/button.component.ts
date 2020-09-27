@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { COLORS_PALETTE_ATTRIBUTES } from '../core/common/color';
 
 export type ShButtonType = 'primary' | 'default' | 'danger' | 'link' | 'text' | null;
 
@@ -34,6 +35,9 @@ export class ShButton implements OnInit {
     }
 
    elementRef.nativeElement.classList.add('sh-button-base');
+   console.log(this._getHostAttribute('color'));
+   const pallete = this._getHostAttribute('color');
+   elementRef.nativeElement.classList.add(`sh-${pallete}`);
   }
 
   ngOnInit() {
@@ -42,6 +46,11 @@ export class ShButton implements OnInit {
   // tslint:disable-next-line:typedef
   _hasHostAttributes(...attributes: string[]) {
     return attributes.some(attribute => this._getHostElement().hasAttribute(attribute));
+  }
+
+  // tslint:disable-next-line:typedef
+  _getHostAttribute(name: string) {
+    return this._getHostElement().getAttribute(name);
   }
 
   // tslint:disable-next-line:typedef

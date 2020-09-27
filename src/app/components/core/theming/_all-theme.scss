@@ -1,2 +1,14 @@
 @import '../core';
 @import '../../button/button-theme';
+@import '../../input/input-theme.scss';
+@import '../../autocomplete/autocomplete-theme.scss';
+@import '../../layout/layout-theme';
+
+
+// Create a theme.
+@mixin angular-shkit-theme($theme) {
+      @include sh-button-theme($theme);
+      @include sh-input-theme($theme);
+      @include sh-autocomplete-theme($theme);
+      @include sh-layout-theme($theme);
+}

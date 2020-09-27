@@ -1,0 +1,44 @@
+@mixin sh-button-color($theme) {
+    $config: mat-get-color-config($theme);
+
+    .sh-button {
+        color: inherit;
+        background: transparent;
+    }
+
+    @include sh-button-theme-property($config, 'color', default-contrast);
+    @include sh-button-theme-property($config, 'background-color', default);
+}
+
+@mixin sh-button-theme-property($theme, $property, $hue) {
+   // получаем палитру основного цвета
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    // $background: map-get($theme, background);
+    // $foreground: map-get($theme, foreground);
+    
+    // устанавливаем цвета
+    .sh-primary {
+      // получаем цвет из палитры
+      #{$property}: sh-color($primary, $hue);
+    }
+
+    .sh-accent {
+      background-color: sh-color($accent, $hue);
+    }
+  }
+
+@mixin sh-button-theme($theme) {
+    $color: mat-get-color-config($theme);
+    @include sh-button-color($color);
+}
+
+@mixin sh-button-typography($config) {
+  .sh-button {
+    font: {
+     // family: sh-font-family($config, button);
+     //  size: sh-font-size($config, button);
+      // weight: sh-font-weight($config, button);
+    }
+  }
+}

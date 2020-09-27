@@ -1,1 +1,14 @@
-<input sh-input />
+<div  >
+    <span>Простой инпут</span>
+    <input sh-input />
+    <span>Инпут аффиксы</span>
+    <sh-input-field shPrefix='prefix input' [shSuffix]='suffixTemplate'>
+        <input sh-input />
+    </sh-input-field>
+</div>
+
+<ng-template #suffixTemplate>
+    <div style="display: flex;
+    justify-content: center;
+    flex-direction: column;">suffixTemplate</div>
+</ng-template>

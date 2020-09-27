@@ -95,6 +95,8 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
 
     private attachOverlay(): void {
         console.log('attachOverlay');
+        console.log(this.shAutocomplete.template);
+        console.log(this.viewContainerRef);
         if (!this.portal && this.shAutocomplete.template) {
             // берем шаблон ангуляр компонента и отображаем его в другом месте
             this.portal = new TemplatePortal(this.shAutocomplete.template, this.viewContainerRef);
@@ -178,8 +180,8 @@ export const SH_AUTOCOMPLETE_VALUE_ACCESSOR: ExistingProvider = {
           .flexibleConnectedTo(this.getConnectedElement())
           .withFlexibleDimensions(false)
           .withPush(false)
-          .withPositions(positions)
-          .withTransformOriginOn('.sh-select-dropdown');
+          .withPositions(positions);
+          // .withTransformOriginOn('.sh-select-dropdown');
         return this.positionStrategy;
     }
 

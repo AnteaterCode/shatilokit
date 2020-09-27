@@ -1,0 +1,25 @@
+// для вложенных значений конфига
+@function _sh-get-type-value($config, $level, $name) {
+    @return map-get(map-get($config, $level), $name);
+}
+
+@function sh-font-size($config, $level) {
+    @return _sh-get-type-value($config, $level, font-size);
+  }
+
+@function sh-font-weight($config, $level) {
+    @return _sh-get-type-value($config, $level, font-weight);
+}
+
+@function sh-font-family($config, $level: null) {
+    $fontFamily: map-get($config, font-family);
+
+    @if $level != null {
+      $fontFamily: _mat-get-type-value($config, $level, font-family);
+    }
+
+    @return $fontFamily;
+}
+
+
+

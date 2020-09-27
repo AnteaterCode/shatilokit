@@ -1,4 +1,4 @@
-import { Directive, OnInit, Input, Optional, Self, Renderer2, ElementRef } from '@angular/core';
+import { Directive, OnInit, Input, Optional, Self, Renderer2, ElementRef, TemplateRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
@@ -6,6 +6,8 @@ import { NgControl } from '@angular/forms';
   exportAs: 'shInput',
 })
 export class ShInputDirective implements OnInit {
+
+
   @Input()
   get disabled(): boolean {
     if (this.ngControl && this.ngControl.disabled !== null) {
@@ -19,7 +21,6 @@ export class ShInputDirective implements OnInit {
   _disabled = false;
 
   constructor(@Optional() @Self() public ngControl: NgControl, renderer: Renderer2, elementRef: ElementRef) {
-    console.log('inppppp');
     renderer.addClass(elementRef.nativeElement, 'sh-input');
   }
 

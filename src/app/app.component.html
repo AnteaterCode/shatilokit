@@ -1,16 +1,35 @@
-<div>
-  button
-</div>
-<sh-buttondemo></sh-buttondemo>
-<div>
-  input
-</div>
-<sh-inputdemo></sh-inputdemo>
-<div>
-  autocomplete
-</div>
-<sh-autocompletedemo>
-</sh-autocompletedemo>
-<div>
-  select
-</div>
+<sh-layout>
+
+  <sh-header>
+    header
+  </sh-header>
+
+  <sh-layout>
+    <sh-sider>
+      <ul>
+        <li>Button</li>
+      </ul>
+    </sh-sider>
+
+    <sh-layout>
+      <sh-content>
+        <div style="max-width: 450px; ">
+          <div>
+            <h2>Button</h2>
+          </div>
+          <sh-buttondemo></sh-buttondemo>
+          <div>
+            <h2> Input</h2>
+          </div>
+          <sh-inputdemo></sh-inputdemo>
+          <div>
+            <h2> Autocomplete</h2>
+          </div>
+          <sh-autocompletedemo>
+          </sh-autocompletedemo>
+        </div>
+      </sh-content>
+      <sh-footer>UiKit Angular</sh-footer>
+    </sh-layout>
+  </sh-layout>
+</sh-layout>
